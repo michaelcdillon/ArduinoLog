@@ -1,0 +1,47 @@
+Simple lightweight logger utility for the Arduino platform.
+
+---
+
+Currently it defaults on the main serial port of the board.
+
+---
+
+Supported formatters:
+  %b - binary value
+  %d - int / byte
+  %f - double / float
+  %s - char string
+  %x - hex value
+
+--- 
+
+To enable the Log, place the following define statement in
+the class you are including everthing in:
+    #define DEVELOPMENT_LOG
+
+To set the log level place the following define statement in
+the class you are including everything in:
+    #define LOG_LEVEL <Log_Level>
+
+Make sure you have the include statements setup properly after
+the Log define statements. 
+
+Example Usage:
+
+    #define  DEVELOPMENT_LOG
+    #define  LOG_LEVEL INFO_LEVEL
+    #include Log.h
+    
+    Log::fine ("Fine statement");
+    Log::debug ("Debug statement");
+    Log::info ("Info statement ");
+    Log::warn ("Warn statement");
+    Log::error ("Error Statement");
+
+    Log::info ("Int: %d", 5);
+    Log::info ("Double: %f", 5.5);
+    Log::info ("Chars: %s", "test string");
+    Log::info ("Binary of 5: %b", 5);
+    Log::info ("Hex of 47: %x", 47);
+       
+    Log::info ("Unrecognized formatter: %p", 1);
